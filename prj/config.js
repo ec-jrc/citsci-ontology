@@ -1,8 +1,8 @@
 var respecConfig = {
 // ISA specific
 //    version: "1.0.2",
-    versionURL: "https://ec-jrc.github.io/datacite-to-dcat-ap/",
-    latestVersionURL: "https://ec-jrc.github.io/datacite-to-dcat-ap/",
+    versionURL: "https://ec-jrc.github.io/citsci-ontology/",
+    latestVersionURL: "https://ec-jrc.github.io/citsci-ontology/",
 
 //	preProcess: [dfn_index],
 //    logos: [{
@@ -39,14 +39,14 @@ var respecConfig = {
 //    license: "ec-notice",
     specStatus: "unofficial",
     shortName: "ppsr-ccm",
-    canonicalURI: "https://ec-jrc.github.io/citsci/ppsr-ccm/",
+    canonicalURI: "https://ec-jrc.github.io/citsci-ontology/",
 //    prevRecURI:           "",
 //    previousPublishDate:  "2016-08-02",
 //    previousMaturity:     "final",
 //    previousURI:          "",
-    edDraftURI:           "https://ec-jrc.github.io/citsci/ppsr-ccm/",
-    issueBase:            "https://github.com/ec-jrc/citsci/issues/",
-    github:               "https://github.com/ec-jrc/citsci/",
+    edDraftURI:           "https://ec-jrc.github.io/citsci-ontology/",
+    issueBase:            "https://github.com/ec-jrc/citsci-ontology/issues/",
+    github:               "https://github.com/ec-jrc/citsci-ontology/",
     editors: [
     {
       name:       "Luigi Ceccaroni",
