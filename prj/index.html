@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Citizen Science Ontology</title>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-language" content="en-GB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script class="remove" src="https://www.w3.org/Tools/respec/respec-w3c-common"></script>
+<!--
+    <script class="remove" src="./respec-ec-common.js"></script>
+    <script class="remove" src="respec-w3c-common.js"></script>
+-->
+    <script class="remove" src="./config.js"></script>
+
+    <style type="text/css">
+/*      table {font-size:small;} */
+      table {width:100%;}
+      table.definition th {width:20%}
+      table.definition td {width:80%}
+      .disclaimer {font-size:.9em;}
+    </style>
+</head>
+<body class="informative">
+<!--
+<article>
+-->
+
+<aside id="disclaimer" class="disclaimer">
+<p>&#x2605;&nbsp;<strong>Disclaimer</strong>: The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.</p>
+</aside>
+
+<section id="abstract" class="introductory">
+<h2>Abstract</h2>
+<p>This document describes the RDF vocabulary implementing the 2018 Edition proposal for the <abbr title="Public Participation in Scientific Research">PPSR</abbr> Core Conceptual Model (CCM).</p>
+<aside class="ednote">
+<p>This document is a draft meant to report work in progress.</p>
+<p>As such, it can be updated any time and it must be considered as unstable.</p>
+<p>Comments and queries should be sent via <a href="https://github.com/ec-jrc/citsci/issues/">the issue tracker of the dedicated GitHub repository</a>.</p>
+</aside>
+</section>
+
+<section id="sotd" class="introductory">
+<!--
+<h2>Status of this document</h2>
+-->
+</section>
+
+<nav id="toc">
+</nav>
+
+<section id="introduction">
+<h2>Introduction</h2>
+
+<p>This document describes the RDF vocabulary implementing the 2018 Edition proposal for the <abbr title="Public Participation in Scientific Research">PPSR</abbr> Core Conceptual Model (CCM) [[PPSR-CCM]], as documented in [[WG5-CSO]].</p>
+
+<aside class="ednote"><p>
+TBD
+</p>
+
+
+</aside>
+<!--
+<p>This document describes the background and methodology for the design of the DataCite profile of DCAT-AP (DataCite+DCAT-AP), as well as the defined mappings.</p>
+
+<p>The motivation for investigating the possiblity of aligning DataCite metadata with DCAT-AP is twofold:</p>
+
+<ol>
+	<li>To identify how to create a DCAT-AP-compliant representation of DataCite metadata, in order to enable their sharing across DCAT-AP-enabled data catalogues. This analysis is not meant to provide a complete representation of all DataCite metadata elements, but only of those included in DCAT-AP.</li>
+	<li>To identify how to create a DataCite-compliant representation of DCAT-AP metadata, in order to enable their publishing on the DataCite infrastructure. This analysis is meant to develop an extension of DCAT-AP, covering all DataCite metadata elements.</li>
+</ol>
+
+<p>The following sections first illustrate the background (<a class="sectionRef" href="#background"></a>) and the methodology (<a class="sectionRef" href="#methodology"></a>) for the design of DataCite+DCAT-AP, followed by an analysis of related work (<a class="sectionRef" href="#comparison-with-dc2ap-and-datacite2rdf"></a>). Then, a high level overview of the metadata elements supported in DCAT-AP and DataCite is provided (<a class="sectionRef" href="#comparison"></a>), along with a summary of mapping issues (<a class="sectionRef" href="#alignment-issues"></a>).</p>
+
+<p>The defined mappings are introduced in <a class="sectionRef" href="#mapping-summary"></a>, and grouped as follows:</p>
+
+<ul>
+<li>1st-level DataCite metadata elements (<a class="sectionRef" href="#mapping-1st-level"></a>)</li>
+<li>2nd-level DataCite metadata elements (<a class="sectionRef" href="#mapping-2nd-level"></a>)</li>
+<li>Identifiers used in DataCite records (<a class="sectionRef" href="#mapping-identifiers"></a>)</li>
+</ul>
+
+<p>The XSLT-based implementation of the defined mappings is included in appendix (<a class="sectionRef" href="#formal-definition-xslt"></a>).</p>
+-->
+</section>
+
+<section id="background">
+
+<h2>Background</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+<!--
+<section id="background-dcat-ap">
+
+<h3>The <em>DCAT Application Profile for Data Portals in Europe</em> (DCAT-AP)</h3>
+
+<p>DCAT-AP [[DCAT-AP]] is a metadata profile developed in the framework of the EU Programme <a href="http://ec.europa.eu/isa/"><em>Interoperability Solutions for European Public Administrations</em></a> (ISA), and based on and compliant with the W3C Data Catalog vocabulary (DCAT) [[VOCAB-DCAT]] - currently, one of the most widely used Semantic Web vocabularies for describing datasets and data catalogues.</p>
+<p>The purpose of DCAT-AP is to define a common interchange metadata format for data portals of the EU and of EU Member States. In order to achieve this, DCAT-AP defines a set of classes and properties, grouped into mandatory, recommended and optional. Such classes and properties correspond to information on datasets and data catalogues that are shared by many European data portals, aiding interoperability. Although DCAT-AP is designed to be independent from its actual implementation, RDF [[RDF-CONCEPTS]] and Linked Data [[LD-BOOK]] are the reference technologies.</p>
+
+</section>
+
+<section id="background-datacite">
+
+<h3>DataCite</h3>
+
+<p><a href="https://www.datacite.org/">DataCite</a> is an international initiative meant to enable citation for scientific datasets. To achieve this, DataCite operates a metadata infrastructure, following the same approach used by <a href="https://www.crossref.org/">CrossRef</a> for scientific publications. As such, the DataCite infrastructure is responsible for issuing persistent identifiers (in particular, <abbr title="Digital Object Identifier">DOI</abbr>s) for datasets, and for registering dataset metadata. Such metadata are to be provided according to the DataCite metadata schema - which is basically an extension to the DOI one.</p>
+<p>Currently, DataCite is the de facto standard for data citation. Therefore, the ability to transform metadata records from and to the DataCite metadata schema would enable, respectively, the harvesting of DataCite records, and the publication of metadata records in the DataCite infrastructure (thus enabling their citation).</p>
+
+</section>
+
+<section id="background-why">
+
+<h3>Aligning DataCite with DCAT-AP</h3>
+
+<p>The motivation for investigating the possiblity of aligning DataCite metadata with DCAT-AP is twofold:</p>
+
+<ol>
+	<li>To identify how to create a DCAT-AP-compliant representation of DataCite metadata, in order to enable their sharing across DCAT-AP-enabled data catalogues. This analysis is not meant to provide a complete representation of all DataCite metadata elements, but only of those included in DCAT-AP.</li>
+	<li>To identify how to create a DataCite-compliant representation of DCAT-AP metadata, in order to enable their publishing on the DataCite infrastructure. This analysis is meant to develop an extension of DCAT-AP, covering all DataCite metadata elements.</li>
+</ol>
+
+<p>About point (2), the DataCite-based extension of DCAT-AP is also meant to integrate into DCAT-AP all the information required for data citation.</p>
+
+<p>Based on these considerations, two versions of a DataCite profile of DCAT-AP have been defined, namely, DataCite+DCAT-AP Core (addressing the requirements of point (1)) and DataCite+DCAT-AP Extended (addressing the requirements of point (2)). More precisely, the core version includes alignments only for the subset of DataCite metadata elements included in the DCAT-AP specification, whereas the extended version tries to defines alignments for all the DataCite metadata elements using DCAT-AP and other Semantic Web vocabularies (whenever DCAT-AP does not offer suitable candidates). As such, DataCite+DCAT-AP Extended is a superset of DataCite+DCAT-AP Core, and both are conformant with DCAT-AP.</p>
+
+</section>
+-->
+</section>
+
+<section id="methodology">
+
+<h2>Methodology</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+<!--
+<p>The reference DCAT-AP and DataCite specifications on which DataCite+DCAT-AP is based are the following ones:</p>
+<ul>
+<li>DCAT-AP v1.2 (November 2018) [[DCAT-AP-20181108]]</li>
+<li>GeoDCAT-AP v1.0.1 (August 2016) [[GeoDCAT-AP-20160802]]</li>
+<li>DataCite v4.1 (October 2017) [[DataCite-20171023]]</li>
+</ul>
+<p>
+<p>For the mappings, existing work has been taken into account concerning the mapping of DataCite to other metadata standards. In particular:</p>
+<ul>
+<li>DataCite Dublin Core Application Profile (DC2AP). Version 1. (February 2016) [[DC2AP]]</li>
+<li>DataCite2RDF: Mapping DataCite Metadata Schema 3.1 Terms to RDF. Version 3.3 (February 2016) [[DataCite2RDF]]</li>
+</ul>
+<p>DataCite+DCAT-AP builds upon these specifications to provide an as much as possible complete mapping of all the metadata elements in version 4.1 of the DataCite metadata schema. Moreover, the defined mappings are backward compatible with earlier versions of the DataCite metadata schema.</p>
+<p>The resulting mappings have been grouped into two classes, corresponding to two different DataCite+DCAT-AP profiles:</p>
+<ul>
+<li><strong>DataCite+DCAT-AP Core</strong>: This profile defines alignments for the subset of DataCite metadata elements supported by DCAT-AP.</li>
+<li><strong>DataCite+DCAT-AP Extended</strong>: This profile defines alignments for all the DataCite metadata elements using DCAT-AP and other Semantic Web vocabularies (whenever DCAT-AP does not provide suitable candidates).</li>
+</ul>
+<p>As far as the extended profile is concerned, the reference vocabularies have been chosen based on the following criteria:</p>
+<ol>
+<li>They have clear persistence and versioning policies.</li>
+<li>Preferably, they should be used across domains and data communities.</li>
+</ol>
+<p>These criteria are determining the main differences with the mappings defined in DC2AP and DC2RDF, that are illustrated in the following section.</p>
+
+-->
+</section>
+
+<section id="namespaces">
+
+<h2>Namespaces</h2>
+
+<table class="simple">
+  <thead>
+    <tr>
+      <th>Prefix</th>
+      <th>Namespace URI</th>
+      <th>Schema &amp; documentation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>adms</code></td>
+      <td><code><a href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</a></code></td>
+      <td>Asset Description Metadata Schema [[VOCAB-ADMS]]</td>
+    </tr>
+<!--    
+    <tr>
+      <td><code>cnt</code></td>
+      <td><code><a href="http://www.w3.org/2011/content#">http://www.w3.org/2011/content#</a></code></td>
+      <td>Representing Content in RDF 1.0 [[Content-in-RDF]]</td>
+    </tr>
+-->    
+    <tr>
+      <td><code>dc</code></td>
+      <td><code><a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a></code></td>
+      <td>Dublin Core Metadata Element Set, Version 1.1 [[DC11]]</td>
+    </tr>
+    <tr>
+      <td><code>dcat</code></td>
+      <td><code><a href="http://www.w3.org/ns/dcat#">http://www.w3.org/ns/dcat#</a></code></td>
+      <td>Data Catalog Vocabulary [[VOCAB-DCAT]]</td>
+    </tr>
+    <tr>
+      <td><code>dct</code></td>
+      <td><code><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></code></td>
+      <td>DCMI Metadata Terms [[DCTERMS]]</td>
+    </tr>
+    <tr>
+      <td><code>duv</code></td>
+      <td><code><a href="http://www.w3.org/ns/duv#">http://www.w3.org/ns/duv#</a></code></td>
+      <td>Dataset Usage Vocabulary [[VOCAB-DUV]]</td>
+    </tr>
+<!--    
+    <tr>
+      <td><code>earl</code></td>
+      <td><code><a href="http://www.w3.org/ns/earl#">http://www.w3.org/ns/earl#</a></code></td>
+      <td>Evaluation and Report Language (EARL) 1.0 [[EARL10]]</td>
+    </tr>
+-->
+    <tr>
+      <td><code>foaf</code></td>
+      <td><code><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></code></td>
+      <td>FOAF Vocabulary [[FOAF]]</td>
+    </tr>
+    <tr>
+      <td><code>frapo</code></td>
+      <td><code><a href="http://purl.org/cerif/frapo/">http://purl.org/cerif/frapo/</a></code></td>
+      <td>FRAPO, the Funding, Research Administration and Projects Ontology [[FRAPO]]</td>
+    </tr>
+    <tr>
+      <td><code>geo</code></td>
+      <td><code><a href="http://www.w3.org/2003/01/geo/wgs84_pos#">http://www.w3.org/2003/01/geo/wgs84_pos#</a></code></td>
+      <td>W3C Basic Geo (WGS84 lat/long) vocabulary [[W3C-BASIC-GEO]]</td>
+    </tr>
+    <tr>
+      <td><code>gsp</code></td>
+      <td><code><a href="http://www.opengis.net/ont/geosparql#">http://www.opengis.net/ont/geosparql#</a></code></td>
+      <td>GeoSPARQL - A Geographic Query Language for RDF Data [[GeoSPARQL]]</td>
+    </tr>
+    <tr>
+      <td><code>locn</code></td>
+      <td><code><a href="http://www.w3.org/ns/locn#">http://www.w3.org/ns/locn#</a></code></td>
+      <td>ISA Programme Core Location Vocabulary [[LOCN]]</td>
+    </tr>
+    <tr>
+      <td><code>org</code></td>
+      <td><code><a href="http://www.w3.org/ns/org#">http://www.w3.org/ns/org#</a></code></td>
+      <td>The Organization Ontology [[VOCAB-ORG]]</td>
+    </tr>
+    <tr>
+      <td><code>owl</code></td>
+      <td><code><a href="http://www.w3.org/2002/07/owl#">http://www.w3.org/2002/07/owl#</a></code></td>
+      <td>OWL Web Ontology Language Reference [[OWL-REF]]</td>
+    </tr>
+    <tr>
+      <td><code>prov</code></td>
+      <td><code><a href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</a></code></td>
+      <td>PROV-O: The PROV Ontology [[PROV-O]]</td>
+    </tr>
+    <tr>
+      <td><code>rdf</code></td>
+      <td><code><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></code></td>
+      <td>Resource Description Framework (RDF): Concepts and Abstract Syntax [[RDF-CONCEPTS]]</td>
+    </tr>
+    <tr>
+      <td><code>rdfs</code></td>
+      <td><code><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></code></td>
+      <td>RDF Vocabulary Description Language 1.0: RDF Schema [[RDF-SCHEMA]]</td>
+    </tr>
+    <tr>
+      <td><code>schema</code></td>
+      <td><code><a href="http://schema.org/">http://schema.org/</a></code></td>
+      <td>schema.org [[SCHEMA-ORG]]</td>
+    </tr>
+    <tr>
+      <td><code>skos</code></td>
+      <td><code><a href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</a></code></td>
+      <td>SKOS Simple Knowledge Organization System - Reference [[SKOS-REFERENCE]]</td>
+    </tr>
+    <tr>
+      <td><code>vcard</code></td>
+      <td><code><a href="http://www.w3.org/2006/vcard/ns#">http://www.w3.org/2006/vcard/ns#</a></code></td>
+      <td>vCard Ontology [[VCARD-RDF]]</td>
+    </tr>
+    <tr>
+      <td><code>xsd</code></td>
+      <td><code><a href="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema#</a></code></td>
+      <td>XML Schema Part 2: Datatypes Second Edition [[XMLSCHEMA-2]]</td>
+    </tr>
+    <tr>
+      <td><code>wdrs</code></td>
+      <td><code><a href="https://www.w3.org/2007/05/powder-s">https://www.w3.org/2007/05/powder-s#</a></code></td>
+      <td>Protocol for Web Description Resources (POWDER): POWDER-S Vocabulary (WDRS) [[POWDER-S]]</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+<section id="ref-thesauri">
+
+<h2>Reference thesauri</h2>
+
+<table class="simple">
+  <thead>
+    <tr>
+      <th>Metadata elements</th>
+      <th>Code list URI</th>
+      <th>Code lists</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Language</td>
+      <td><code><a href="http://publications.europa.eu/resource/authority/language">http://publications.europa.eu/resource/authority/language</a></code></td>
+      <td>Language register operated by the Metadata Registry of the Publications Office of the EU [[MDR-LANG]]</td>
+      <td>stable</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Format</td>
+      <td><code><a href="http://publications.europa.eu/resource/authority/file-type">http://publications.europa.eu/resource/authority/file-type</a></code></td>
+      <td>File type register operated by the Metadata Registry of the Publications Office of the EU [[MDR-FT]]</td>
+      <td>stable</td>
+    </tr>
+    <tr>
+      <td><code><a href="http://www.iana.org/assignments/media-types/">http://www.iana.org/assignments/media-types</a></code></td>
+      <td>IANA MIME Media Types register [[IANA-MEDIA-TYPES]]</td>
+      <td><em>testing</em></td>
+    </tr>
+<!--    
+    <tr>
+      <td rowspan="2">Maintenance frequency (Maintenance information)</td>
+      <td><code><a href="http://publications.europa.eu/resource/authority/frequency">http://publications.europa.eu/resource/authority/frequency</a></code></td>
+      <td>Frequency code register operated by the Metadata Registry of the Publications Office of the EU [<a href="http://publications.europa.eu/mdr/authority/frequency/">MDR-FR</a>]</td>
+      <td>stable</td>
+    </tr>
+    <tr>
+      <td><code>http://inspire.ec.europa.eu/metadata-codelist/MaintenanceFrequencyCode</code></td>
+      <td>Register operated by the INSPIRE Registry for maintenance frequency codes defined in ISO 19115. The register is not yet available, and the code list URI is tentative.</td>
+      <td><strong>unstable</strong></td>
+    </tr>
+    <tr>
+      <td>Spatial representation type</td>
+      <td><code>http://inspire.ec.europa.eu/metadata-codelist/SpatialRepresentationTypeCode</code></td>
+      <td>Register operated by the INSPIRE Registry for spatial representation type codes defined in ISO 19115. The register is not yet available, and the code list URI is tentative.</td>
+      <td><strong>unstable</strong></td>
+    </tr>
+-->    
+  </tbody>
+</table>
+
+</section>
+
+<section id="vocabulary-overview">
+
+<h2>Vocabulary overview</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+<figure id="fig-project">
+<a href="./img/ppsr-ccm-project.png"><img src="./img/ppsr-ccm-project.png"/></a>
+<figcaption>Vocabulary overview</figcaption>
+</figure>
+
+<aside class="ednote">
+<p>Entity contact point should not be duplicated in <a href="#fig-project"></a></p>
+</aside>
+
+
+<aside class="ednote">
+<p>Should also project participants be added?</p>
+</aside>
+
+<aside class="ednote">
+<p>Should catalogues / repositories of project records be added?</p>
+</aside>
+
+<aside class="ednote">
+<p>Should also project outputs (reports, publications, data, events, etc.) be added?</p>
+</aside>
+
+</section>
+
+<section id="vocabulary-specification">
+
+<h2>Vocabulary specification</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+<section>
+<h3>Module: Project core</h3>
+
+<p><a href="#fig-project-core"></a> represents the central class Project and its properties.</p>
+
+<figure id="fig-project-core">
+<a href="./img/ppsr-ccm-project-core.png"><img src="./img/ppsr-ccm-project-core.png"/></a>
+<figcaption>Project core</figcaption>
+</figure>
+
+<section id="project">
+<h4>Class: Project</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: GUID</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its Globally Unique IDentifier (GUID).</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote">
+<p>
+A possible candidate could be <code>dct:identifier</code> [[DCTERMS]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Name</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#name"><code>proj:name</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#name">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its name.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+Property <code>proj:name</code> does not exist in [[PROJ]]. Properties that could be used instead are <code>dct:title</code> [[DCTERMS]] and/or <code>foaf:name</code> [[FOAF]].
+</p>
+</aside>
+
+<aside class="ednote">
+<p>
+Should also a property be added to specify the project acronym?
+</p>
+</aside>
+
+
+
+</section>
+
+<section>
+<h4>Property: Description</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="RDF-SCHEMA#" title=""><code>rdfs:comment</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its textual description.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+The [[DCTERMS]] property <code>dct:description</code> could be more appropriate.
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Status</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Property:resource_keyword" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="SKOS-REFERENCE#concepts" title="http://www.w3.org/2004/02/skos/core#Concept"><code>skos:Concept</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its activity status.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>adms:status</code> [[VOCAB-ADMS]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Start date</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="PROV-O#startedAtTime" title="http://www.w3.org/ns/prov#startedAtTime"><code>prov:startedAtTime</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="XMLSCHEMA-2#date" title="http://www.w3.org/2001/XMLSchema#date"><code>xsd:date</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its start date.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: End date</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="PROV-O#endedAtTime" title="http://www.w3.org/ns/prov#endedAtTime"><code>prov:endedAtTime</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="XMLSCHEMA-2#date" title="http://www.w3.org/2001/XMLSchema#date"><code>xsd:date</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its end date.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Duration</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="DCTERMS#terms_extent" title="http://purl.org/dc/terms/extent"><code>dct:extent</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="XMLSCHEMA-2#duration" title="http://www.w3.org/2001/XMLSchema#duration"><code>xsd:duration</code></a></td></tr>
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>It associates a project to its duration.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>This property is meant to be used when the start / end dates of the project are unknown.</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>dct:extent</code> [[DCTERMS]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: URL</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_homepage" title="http://xmlns.com/foaf/0.1/homepage"><code>foaf:homepage</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="FOAF#term_Document" title="http://xmlns.com/foaf/0.1/Document"><code>foaf:Document</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its web page or URL</td></tr>
+<!--    
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>foaf:homepage</code> [[FOAF]].
+</p>
+</aside>
+
+</section>
+
+</section>
+
+<section id="sec-project-detailed-information">
+<h3>Module: Project detailed information</h3>
+
+<p><a href="#fig-project-detailed-information"></a> represents the central class Project and its properties related to the representation of the detailed information about the project.</p>
+
+<aside class="note"><p>The two modules/profiles “Project core” and “Project detailed information” cover (and extend) “PPSR: Basic Project Information” in the 2017 model [[PPSR-CCM]].</p></aside>
+
+<figure id="fig-project-detailed-information">
+<a href="./img/ppsr-ccm-project-detailed-information.png"><img src="./img/ppsr-ccm-project-detailed-information.png"/></a>
+<figcaption>Project detailed information</figcaption>
+</figure>
+
+<aside class="ednote">
+<p>Entities outcome and intended outcome could actually be merged in <a href="#fig-project-detailed-information"></a></p>
+</aside>
+
+<aside class="ednote">
+<p>Unclear how to model an outcome. There's a reference code list for it?</p>
+</aside>
+
+<section>
+<h4>Property: Aim</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective"><code>proj:objective</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">proj:objective</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its aims.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+
+</section>
+
+<section>
+<h4>Property: Tag</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="RDF-SCHEMA#" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>rdfs:Literal</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its tags.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>Tags are free text expressions. The keyword vocabulary can be used for tags.</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote">
+<p>
+Usually, if a vocabulary has already a way to specify terms from a controlled vocabularies, the purpose of free text keywords/tags is to give people the ability to specify concepts not present in the reference vocabularies. Here instead it seems that free text keywords should use the same controlled vocabularies.
+</p>
+</aside>
+
+<aside class="ednote">
+<p>
+The [[VOCAB-DCAT-2]] property <code>dcat:theme</code> could be used here, if "tags" are specified with URIs and/or as <code>skos:Concept</code>'s [[SKOS-REFERENCE]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Keyword</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Property:resource_keyword" title=""><code>dcat:keyword</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>rdfs:Literal</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its keywords. Keywords are chosen from a predefined set of text expressions.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>If multiple keywords need to be specified, this must be done with multiple instances of <code>dcat:keyword</code>.</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+The definition does not match how <code>dcat:keyword</code> should be used: its value is not a comma-separated list, but a single keyword. If multiple keywords need to be specified, this must be done with multiple instances of <code>dcat:keyword</code>.
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Intended Outcome</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Property:resource_keyword" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>??</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates the intended outcomes of a project to its aims.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>For example, a project can have, as aim, “to evaluate impacts of citizen science” and, as intended outcome, “metrics and instruments to evaluate citizen science impacts”. As another example, a project can have, as aim, “to increase the impact of citizen science” and, as intended outcome, “an increase of the awareness of the citizens”.</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Outcome</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Property:resource_keyword" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>??</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its outcomes.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+</section>
+
+</section>
+
+<section id="sec-project-image">
+<h3>Module: Project Image</h3>
+
+<p><a href="#fig-project-image"></a> represents the central class Project and its properties to represent the images about the project and related to the project.</p>
+
+<aside class="note"><p>
+The two modules/profiles “Project core” and “Project image” cover (and extend) “PPSR: Images and communications” in the 2017 model [[PPSR-CCM]].
+</p>
+</aside>
+
+<figure id="fig-project-image">
+<a href="./img/ppsr-ccm-project-image.png"><img src="./img/ppsr-ccm-project-image.png"/></a>
+<figcaption>Project image</figcaption>
+</figure>
+
+<section id="ProjectImage">
+<h4>Class: Project Image</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+The notion of "project record" can be specified by using the [[VOCAB-DCAT-2]] class <code>dcat:CatalogRecord</code>.
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Image</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_img" title="http://xmlns.com/foaf/0.1/img"><code>foaf:img</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>??</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to images about the project and related to the project.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+Property <code>foaf:img</code> has domain <code>foaf:Person</code>, so it is questionable if it can be used here.
+</p>
+</aside>
+
+</section>
+<!--
+<section>
+<h4>Property: Logo</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_logo" title="http://xmlns.com/foaf/0.1/logo"><code>foaf:logo</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->
+<!--    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>??</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>An image to represent a project.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+-->
+<section>
+<h4>Property: Image credit</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+<!--    
+    <tr><th class="prop">Domain:</th><td><a data-cite="PROJ#" title="http://www.w3.org/ns/proj#objective">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="RDF-SCHEMA#ch_literal" title="http://www.w3.org/2000/01/rdf-schema#Literal"><code>??</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates an image to its credits.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+</section>
+
+</section>
+
+<section id="sec-project-record">
+<h3>Module: Project Record</h3>
+
+<p>A “ProjectRecord” class has been added to make the underlying structure explicit and to specify the semantics more formally. This concepts does not refer to observations or to the dataset holding the project observations, but to a part of a database or spreadsheet that contains a complete set of information about the project. This is a concept which was implicit in the 2017 model [[PPSR-CCM]], with a variety of characteristics which were well-defined, necessary and easily reusable. The project record, which is not essential to the representation of a project, given that all project metadata are defined and linked directly to the Project class, is basically used in catalogues and repositories of projects, such as Scistarter or BioCollect. Therefore, multiple project records can exist in different catalogues/repositories, which refer to the same project, and the “ProjectRecord” class helps the linkage among them. This class can also represent a snapshot of project information, which is used to make search and reasoning more efficient.<p>
+
+<aside class="note"><p>The two modules/profiles <a href="#sec-project-core">“Project core”</a> and <a href="#sec-project-record">“Project record”</a> cover (and extend) “PPSR: Database information” in the 2017 model [[PPSR-CCM]].</p>
+</aside>
+
+<figure id="fig-project-record">
+<a href="./img/ppsr-ccm-project-record.png"><img src="./img/ppsr-ccm-project-record.png"/></a>
+<figcaption>Project Record</figcaption>
+</figure>
+
+<section id="ProjectRecord">
+<h4>Class: Project Record</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Class:Catalog_Record" title="http://www.w3.org/ns/dcat#CatalogRecord"><code>dcat:CatalogRecord</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+The notion of "project record" can be specified by using the [[VOCAB-DCAT-2]] class <code>dcat:CatalogRecord</code>.
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Describes</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>foaf:primaryTopic</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>It associates the record with the project it refers to.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>In a concrete implementation, the link could be through the identifier “Project.GUID”.</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+Following [[VOCAB-DCAT]] &amp; [[VOCAB-DCAT-2]], a possible candidate could be <code>foaf:primaryTopic</code> [[FOAF]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: GUID</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="DCTERMS#term_identifier" title="http://purl.org/dc/terms/identifier"><code>dct:identifier</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>It associates the record with its GUID (for example, identifier of a database record).</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>dct:identifier</code> [[DCTERMS]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: External ID</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-ADMS#adms-identifier" title="http://www.w3.org/ns/amds#identifier"><code>adms:identifier</code></a> or <a data-cite="OWL-REF#sameAs-def" title="http://www.w3.org/2002/07/owl#"><code>owl:sameAs</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>It associates the record with the identifier of a harvested or linked Project Record in another repository (see above). It promotes traceability.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>It the GUID is an HTTP URI, <code>owl:sameAs</code> should be used; if a literal, <code>adms:identifier</code>. For the use of <code>adms:identifier</code>, see [[VOCAB-ADMS]].</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>adms:identifier</code> [[VOCAB-ADMS]] and/or <code>owl:sameAs</code> [[OWL-REF]].
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Origin</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates the record with an external source (if applicable) from which the record is derived - e.g. external catalogue from which it was harvested.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Date Created</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="DCTERMS#terms-created" title="http://purl.org/dc/terms/created"><code>dct:created</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="DCTERMS#terms-created" title="http://purl.org/dc/terms/created">??</a></td></tr>
+-->
+    <tr><th class="prop">Range:</th><td><a data-cite="XMLSCHEMA-2#date" title="http://www.w3.org/2001/XMLSchema#date"><code>xsd:date</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates the record with the date it was created.</td></tr>
+<!--
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Date Updated</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="DCTERMS#terms-modified" title="http://purl.org/dc/terms/modified"><code>dct:modified</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--
+    <tr><th class="prop">Sub-property of:</th><td><a data-cite="DCTERMS#terms-created" title="http://purl.org/dc/terms/created">??</a></td></tr>
+-->
+    <tr><th class="prop">Range:</th><td><a data-cite="XMLSCHEMA-2#date" title="http://www.w3.org/2001/XMLSchema#date"><code>xsd:date</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates the record with the date it was last updated.</td></tr>
+<!--
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Language</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="DCTERMS#terms-language" title="http://purl.org/dc/terms/language"><code>dct:language</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-class of:</th><td><a data-cite="DCTERMS#terms-modified" title="http://purl.org/dc/terms/modified">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="DCTERMS#terms-LinguisticSystem" title="http://purl.org/dc/terms/LinguisticSystem"><code>dct:LinguisticSystem</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates the record with a human-readable natural language in which it is written.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>The language should be specified by using URIs from reference registries, as [[MDR-LANG]].</td></tr>
+<!--    
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+A possible candidate could be <code>dct:language</code> [[DCTERMS]].
+</p>
+</aside>
+
+</section>
+
+</section>
+
+<section id="sec-project-contact-point">
+<h3>Module: Contact point</h3>
+
+<aside class="note"><p>This concept is addressed in more detail as it is of importance for data management. The module “Project contact point” covers (and extends) “PPSR: Personal and Organizational Affiliates” in the 2017 model [[PPSR-CCM]]. At this stage, we only document a suggested re-modelling of “contact point”. The documentation of that complete “affiliation” profile, which includes “contact point”, is in preparation.</p>
+</aside>
+
+<figure id="fig-project-contact-point">
+<a href="./img/ppsr-ccm-project-contact-point.png"><img src="./img/ppsr-ccm-project-contact-point.png"/></a>
+<figcaption>Project contact point</figcaption>
+</figure>
+
+
+<aside class="ednote">
+It may be worth considering reshaping this module based on widely used vocabularies as [[VCARD-RDF]] / [[SCHEMA-ORG]].
+</aside>
+
+<section id="ContactPoint">
+<h4>Class: Contact point</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a data-cite="VCARD-RDF#d4e1819" href="http://www.w3.org/2006/vcard/ns#Kind"><code>vcard:Kind</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+<!--    
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote">
+A possible candidate is <code>vcard:Kind</code> [[VCARD-RDF]].
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Contact point</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="VOCAB-DCAT-2#Property:resource_contact_point" title="http://www.w3.org/ns/dcat#contactPoint"><code>dcat:contactPoint</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+<!--    
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+-->    
+    <tr><th class="prop">Range:</th><td><a data-cite="VCARD-RDF#d4e1819" href="http://www.w3.org/2006/vcard/ns#Kind"><code>vcard:Kind</code></a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project, or any other resource type, with an agent that acts as contact point for it. </td></tr>
+<!--    
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+-->    
+    </tbody>
+</table>
+
+<aside class="ednote">
+A possible candidate is <code>dcat:contactPoint</code> [[VOCAB-DCAT-2]].
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Contact details</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a contact point with its contact details.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote">
+May be worth reconsidering this, and align it with [[VCARD-RDF]]. There is probably too much information inflated here.
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Means of contact</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a contact point with the applicable means of contact.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote">
+May be worth reconsidering this, and align it with [[VCARD-RDF]].
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Contact point type</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a contact point with its type.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote">
+Probably this types should be modelled as distinct properties.
+</aside>
+
+</section>
+
+</section>
+
+<section id="sec-project-funding">
+<h3>Module: Project funding</h3>
+
+<aside class="note"><p>The module “Project funding” covers (and extends) “PPSR: Country specific terms” in the 2017 model [[PPSR-CCM]].</p>
+</aside>
+
+<figure id="fig-project-funding">
+<a href="./img/ppsr-ccm-project-funding.png"><img src="./img/ppsr-ccm-project-funding.png"/></a>
+<figcaption>Project funding</figcaption>
+</figure>
+
+<section id="ProjectFunding">
+<h4>Class: Project funding</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+<aside class="ednote"><p>
+Following [[VOCAB-DCAT]] &amp; [[VOCAB-DCAT-2]], the notion of "project record" can be specified by using the [[VCARD-RDF]] class <code>vcard:Kind</code>.
+</p>
+</aside>
+
+</section>
+
+<section>
+<h4>Property: Funding program</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a project to its funding program.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Identifier</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a funding program to its GUID.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Name</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a funding program / funding source to its name.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Description</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a funding program to its textual description.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Funding source</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a funding program to its funding source(s).</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Funding source type</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>It associates a funding source with its type.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+</section>
+
+
+<section id="sec-project-geography">
+<h3>Module: Project geography</h3>
+
+<aside class="note">
+<p>Location and place information can be highly ambiguous. We defined a richer formal specification of the semantics of the terms used in order to avoid misinterpretations. We separated a project’s “GeographicExtent” from its “SpatialAreaOfInterest”. The former can be used to represent the partners or participants locations, whereas the latter is the area on which the project operates. As this might be out in space, we speak about “SpatialAreaOfInterest” (i.e. non necessarily geography). This is not necessarily an “area”; it could be a “volume” (e.g. some part of our galaxy) and might be revised in the future. We could also add a “temporal extent of interest” (e.g. the 16th century) for historical projects.</p>
+<p>The suggested structure might later also be re-used in other parts of the model.</p>
+</aside>
+
+<section id="SpatialAreaOfInterest">
+<h3>Class: Spatial area of interest</h3>
+
+<figure id="fig-project-spatial-area-of-interest">
+<a href="./img/ppsr-ccm-project-spatial-area-of-interest.png"><img src="./img/ppsr-ccm-project-spatial-area-of-interest.png"/></a>
+<figcaption>Project spatial area of interest</figcaption>
+</figure>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Contact point</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>Global Unique Identifier (GUID) for the project, system generated.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section id="GeographicExtent">
+<h3>Class: Geographic extent</h3>
+
+<figure id="fig-project-geographic-extent">
+<a href="./img/ppsr-ccm-project-geographic-extent.png"><img src="./img/ppsr-ccm-project-geographic-extent.png"/></a>
+<figcaption>Geographic extent</figcaption>
+</figure>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Class:</th>
+    <td><a href="http://www.w3.org/ns/dcat#Catalog"><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-class of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>??</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+<section>
+<h4>Property: Contact point</h4>
+
+<table class="simple definition">
+    <thead>
+    <tr>
+    <th>RDF Property:</th>
+    <td><a data-cite="FOAF#term_primaryTopic" title=""><code>??</code></a></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><th class="prop">Sub-property of:</th><td><a href="#Class:Dataset">??</a></td></tr>
+    <tr><th class="prop">Definition:</th><td>Global Unique Identifier (GUID) for the project, system generated.</td></tr>
+    <tr><th class="prop">Usage note:</th><td>??</td></tr>
+    <tr><th class="prop">See also:</th><td> <a href="#Class:Catalog_Record">??</a></td></tr>
+    </tbody>
+</table>
+
+</section>
+
+</section>
+
+</section>
+
+<section id="acknowledgements" class="appendix">
+<h2>Acknowledgements</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+</section>
+                    
+<section id="change-history" class="appendix">
+<h2>Change history</h2>
+
+<aside class="ednote"><p>
+TBD
+</p>
+</aside>
+
+</section>
+<!--
+<footer>
+<p>&copy; European Union, 2015-2018.</p>
+<p>Reuse is authorised, provided the source is acknowledged. The Commission's reuse policy is implemented by the <a href='http://data.europa.eu/eli/dec/2011/833/oj'>Decision of 12 December 2011 - reuse of Commission documents</a>.</p>
+</footer>
+-->
+
+<!--
+</article>
+-->
+
+</body>
+</html>
