@@ -1,8 +1,8 @@
 var respecConfig = {
 // ISA specific
 //    version: "1.0.2",
-    versionURL: "https://ec-jrc.github.io/citsci-ontology/",
-    latestVersionURL: "https://ec-jrc.github.io/citsci-ontology/",
+    versionURL: "https://ec-jrc.github.io/citsci-ontology/prj/",
+    latestVersionURL: "https://ec-jrc.github.io/citsci-ontology/prj/",
 
 //	preProcess: [dfn_index],
 //    logos: [{
@@ -38,13 +38,13 @@ var respecConfig = {
 */
 //    license: "ec-notice",
     specStatus: "unofficial",
-    shortName: "ppsr-ccm",
-    canonicalURI: "https://ec-jrc.github.io/citsci-ontology/",
+    shortName: "prj",
+    canonicalURI: "https://ec-jrc.github.io/citsci-ontology/prj/",
 //    prevRecURI:           "",
 //    previousPublishDate:  "2016-08-02",
 //    previousMaturity:     "final",
 //    previousURI:          "",
-    edDraftURI:           "https://ec-jrc.github.io/citsci-ontology/",
+    edDraftURI:           "https://ec-jrc.github.io/citsci-ontology/prj/",
     issueBase:            "https://github.com/ec-jrc/citsci-ontology/issues/",
     github:               "https://github.com/ec-jrc/citsci-ontology/",
     editors: [
