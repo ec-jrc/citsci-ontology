@@ -57,6 +57,7 @@ var respecConfig = {
     {
       name:       "Sven Schade",
       url: "",
+      orcid: "0000-0001-5677-5209",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
 //      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
@@ -78,6 +79,7 @@ var respecConfig = {
     {
       name:       "Lucy Bastin",
       url: "",
+      orcid: "0000-0003-1321-0800",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
 //      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
@@ -99,6 +101,7 @@ var respecConfig = {
     {
       name:       "Chrisa Tsinaraki",
       url: "",
+      orcid: "0000-0002-6012-0835",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
 //      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
