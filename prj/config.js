@@ -52,23 +52,16 @@ var respecConfig = {
       name:       "Luigi Ceccaroni",
       company:    "Earthwatch",
       url: "",
+      orcid: "0000-0002-3116-0811",
       companyURL: "https://earthwatch.org.uk/"
     },
     {
-      name:       "Sven Schade",
+      name: "Sven Schade",
       url: "",
       orcid: "0000-0001-5677-5209",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
-//      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
       extras: [
-/*      
-        {
-          name: "<img src='orcid_logo.png' alt='ORCID logo'/>",
-          href: "https://orcid.org/0000-0001-5677-5209",
-          class: "orcid"
-        },
-*/        
         {
           name: "\u2605",
           href: "#disclaimer",
@@ -77,20 +70,12 @@ var respecConfig = {
       ]
     },
     {
-      name:       "Lucy Bastin",
+      name: "Lucy Bastin",
       url: "",
       orcid: "0000-0003-1321-0800",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
-//      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
       extras: [
-/*      
-        {
-          name: "<img src='orcid_logo.png' alt='ORCID logo'/>",
-          href: "https://orcid.org/0000-0003-1321-0800",
-          class: "orcid"
-        },
-*/        
         {
           name: "\u2605",
           "href": "#disclaimer",
@@ -99,20 +84,12 @@ var respecConfig = {
       ]
     },
     {
-      name:       "Chrisa Tsinaraki",
+      name: "Chrisa Tsinaraki",
       url: "",
       orcid: "0000-0002-6012-0835",
       company:    "European Commission, Joint Research Centre",
       companyURL: "https://ec.europa.eu/jrc/",
-//      note: "The views expressed are purely those of the author and may not in any circumstances be regarded as stating an official position of the European Commission.",
       extras: [
-/*      
-        {
-          name: "<img src='orcid_logo.png' alt='ORCID logo'/>",
-          href: "https://orcid.org/0000-0002-6012-0835",
-          class: "orcid"
-        },
-*/        
         {
           name: "\u2605",
           "href": "#disclaimer",
@@ -121,33 +98,37 @@ var respecConfig = {
       ]
     },
     {
-      name:       "Rob Lemmens",
-      company:    "University of Twente, Faculty of Geo-Information Science and Earth Observation",
+      name: "Rob Lemmens",
+      company: "University of Twente, Faculty of Geo-Information Science and Earth Observation",
       url: "",
+      orcid: "0000-0001-5269-6343",
       companyURL: "https://www.itc.nl/"
     },
     {
-      name:       "Gilles Falquet",
-      company:    "University of Geneva",
+      name: "Gilles Falquet",
+      company: "University of Geneva",
       url: "",
+      orcid: "0000-0002-1401-5110",
       companyURL: "https://www.unige.ch/"
     },
     {
-      name:       "Friederike Klan",
-      company:    "German Aerospace Center",
+      name: "Friederike Klan",
+      company: "German Aerospace Center",
       url: "",
       companyURL: "https://www.dlr.de/"
     },
     {
-      name:       "Jaume Piera",
-      company:    "Spanish National Research Council, Institute of Marine Sciences",
+      name: "Jaume Piera",
+      company: "Spanish National Research Council, Institute of Marine Sciences",
       url: "",
+      orcid: "0000-0001-5818-9836",
       companyURL: "http://www.icm.csic.es/"
     },
     {
-      name:       "Jakub Trojan",
-      company:    "Czech Academy of Sciences, Institute of Geonics",
+      name: "Jakub Trojan",
+      company: "Czech Academy of Sciences, Institute of Geonics",
       url: "",
+      orcid: "0000-0002-6658-8586",
       companyURL: "http://www.geonika.cz/"
     },
     ],
