@@ -49,8 +49,8 @@ var respecConfig = {
     github:               "https://github.com/ec-jrc/citsci-ontology/",
     editors: [
     {
-      name:       "Luigi Ceccaroni",
-      company:    "Earthwatch",
+      name: "Luigi Ceccaroni",
+      company: "Earthwatch",
       url: "",
       orcid: "0000-0002-3116-0811",
       companyURL: "https://earthwatch.org.uk/"
