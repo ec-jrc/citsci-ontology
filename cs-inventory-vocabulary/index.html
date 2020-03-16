@@ -1,0 +1,419 @@
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title>CS Inventory Vocabulary</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    
+	<script src="https://inspire.ec.europa.eu/cdn/1.0/js/jquery.min.js" crossorigin=""></script>
+    <script src="https://inspire.ec.europa.eu/cdn/1.0/js/popper.min.js" crossorigin="" defer></script>
+    <script src="https://inspire.ec.europa.eu/cdn/1.0/js/bootstrap.min.js" crossorigin="" defer></script>
+    <script src="https://inspire.ec.europa.eu/cdn/1.0/js/bootstrap-select.min.js" crossorigin="" defer></script>
+	
+	<script>
+      var cl = document.querySelector('html').classList;
+      cl.remove('no-js');
+      cl.add('has-js');
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.24.0/ec-preset-website/styles/ecl-ec-preset-website.css"
+      integrity="sha256-9j7SsICl+ZX7Fp76FW0ujTGffmyeiYjozFz5CrW8cBI= sha384-ylCAZZb1gOTwHIcxzpGsGD7dBgLgo3+ElksYZVMRUNEai06BznLjw4s4PygTkhUR sha512-NT5nVMJhZeIXxAs9GpbgD3YFbW8j9IuuI2MGUYrIcV9w9ZGK1RiI53UX1B3z2hOGUq8EsVpVwsd7tv6yoISjAg=="
+      crossorigin="anonymous"
+      media="screen"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.24.0/ec-preset-website/styles/ecl-ec-preset-website-print.css"
+      integrity="sha256-045tJgqAj/Roq6CMlkNAeuqaVwsVkgxRlx2yVAwJ+K8= sha384-DRy0ViDtsad7jBr29u25O6IVB7x/ioCf+NFF/VYUADAqtglqsdzgyRAI6Ws2ditv sha512-xLJwwvWHtB4immzoa6KERTGK5tRsYg1+jlFucj3FNfbiUd1yanLTVtHvpvM3GBYIo+I7Vk1ks1rhnkYh+KEcJA=="
+      crossorigin="anonymous"
+      media="print"
+    />
+    <link rel="stylesheet" href="https://inspire.ec.europa.eu/cdn/1.0/css/ec.eu.css">
+	<link rel="stylesheet" href="css/style.css">	
+  </head>
+  <body>
+<body>
+    <!-- paste the markup from the template here -->
+
+<header data-ecl-auto-init="SiteHeaderStandardised" class="ecl-site-header-standardised">
+  <div class="ecl-site-header-standardised__container ecl-container">
+    <div class="ecl-site-header-standardised__top"><a
+        class="ecl-link ecl-link--standalone ecl-site-header-standardised__logo-link" href="http://ec.europa.eu/"
+        aria-label="European Commission"><img alt="European Commission logo" title="European Commission"
+          class="ecl-site-header-standardised__logo-image"
+          src="css/logo--en.30b933cc.svg" /></a>
+      <div class="ecl-site-header-standardised__action">
+        <!-- <div class="ecl-site-header-standardised__login-container"><a
+            class="ecl-link ecl-link--standalone ecl-site-header-standardised__login-toggle" href="/example"><svg
+              focusable="false" aria-hidden="true" class="ecl-icon ecl-icon--s">
+              <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--log-in"></use>
+            </svg>Log in</a></div>
+			<a class="ecl-link ecl-link--standalone ecl-site-header-standardised__language-selector" href="/example"
+          data-ecl-language-selector="true"><span class="ecl-site-header-standardised__language-icon"><svg
+              focusable="false" aria-hidden="true" class="ecl-icon ecl-icon--s">
+              <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--language"></use>
+            </svg><span class="ecl-site-header-standardised__language-code">en</span></span>English</a> -->
+        <div class="ecl-site-header-standardised__search-container"><a
+            class="ecl-link ecl-link--standalone ecl-site-header-standardised__search-toggle" href="/example"
+            data-ecl-search-toggle="true" aria-controls="search-form-id" aria-expanded="false"><svg focusable="false"
+              aria-hidden="true" class="ecl-icon ecl-icon--s">
+              <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--search"></use>
+            </svg>Search</a>
+          <form id="nexteuropa-europa-search-search-form" data-ecl-search-form="true"
+            class="ecl-site-header-standardised__search ecl-search-form" role="search" action="https://ec.europa.eu/search/?" method="get" >
+            <div class="ecl-form-group ecl-form-group--text-input"><label class="ecl-search-form__label ecl-form-label"
+                for="search-input-id">Search</label><input type="search" id="edit-querytext" name="QueryText" 
+                class="ecl-search-form__text-input ecl-text-input" /></div><button aria-label="Search" type="submit"
+              class="ecl-search-form__button ecl-button ecl-button--search"><span class="ecl-button__container"><span
+                  class="ecl-button__label" data-ecl-label="true">Search</span><svg focusable="false" aria-hidden="true"
+                  data-ecl-icon="true" class="ecl-button__icon ecl-button__icon--after ecl-icon ecl-icon--xs">
+                  <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--search"></use>
+                </svg></span></button>
+			<input type="hidden" name="form_build_id" value="form-HNzukaUwhdrtb67yMDfcMamU5dTPWdPx0f_pJEaMQZI" />
+			<input type="hidden" name="form_id" value="nexteuropa_europa_search_search_form" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ecl-site-header-standardised__banner-top">
+    <div class="ecl-container">CS Inventory Vocabulary</div>
+  </div>
+  </div>  <div class="ecl-site-header-standardised__banner" style="padding-top: 1.5rem">
+    <div class="ecl-container"><!--<a class="ecl-link ecl-link--standalone ecl-site-header-standardised__menu-toggle"
+        href="/example">
+        <svg focusable="false" aria-hidden="true" class="ecl-icon ecl-icon--s">
+          <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--hamburger"></use>
+        </svg></a>-->An inventory of citizen science activities for environmental policies</div>
+  </div>
+  <div hidden="" class="ecl-language-list ecl-language-list--overlay" aria-labelledby="ecl-language-list__title"
+    role="dialog" data-ecl-language-list-overlay="true">
+    <div class="ecl-language-list__container ecl-container">
+      <div class="ecl-row">
+        <div class="ecl-language-list__close ecl-col-12 ecl-col-lg-8 ecl-offset-lg-2"><button
+            data-ecl-language-list-close="true" type="submit"
+            class="ecl-language-list__close-button ecl-button ecl-button--ghost"><span
+              class="ecl-button__container"><span class="ecl-button__label" data-ecl-label="true">Close</span><svg
+                focusable="false" aria-hidden="true" data-ecl-icon="true"
+                class="ecl-button__icon ecl-button__icon--after ecl-icon ecl-icon--s">
+                <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#ui--close"></use>
+              </svg></span></button></div>
+        <div class="ecl-language-list__title ecl-col-12 ecl-col-lg-8 ecl-offset-lg-2" id="ecl-language-list__title"><svg
+            focusable="false" aria-hidden="true" class="ecl-language-list__title-icon ecl-icon ecl-icon--m">
+            <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#general--generic-lang"></use>
+          </svg>Select your language</div>
+      </div>
+      <div class="ecl-row">
+        <div class="ecl-language-list__column ecl-col-12 ecl-col-lg-4 ecl-offset-lg-2">
+          <ul class="ecl-language-list__list">
+            <li class="ecl-language-list__item "><a lang="bg" hrefLang="bg" rel="alternate" href="/example#language_bg"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">български</a></li>
+            <li class="ecl-language-list__item "><a lang="es" hrefLang="es" rel="alternate" href="/example#language_es"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">español</a></li>
+            <li class="ecl-language-list__item "><a lang="cs" hrefLang="cs" rel="alternate" href="/example#language_cs"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">čeština</a></li>
+            <li class="ecl-language-list__item "><a lang="da" hrefLang="da" rel="alternate" href="/example#language_da"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">dansk</a></li>
+            <li class="ecl-language-list__item "><a lang="de" hrefLang="de" rel="alternate" href="/example#language_de"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">Deutsch</a></li>
+            <li class="ecl-language-list__item "><a lang="et" hrefLang="et" rel="alternate" href="/example#language_et"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">eesti</a></li>
+            <li class="ecl-language-list__item "><a lang="el" hrefLang="el" rel="alternate" href="/example#language_el"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">ελληνικά</a></li>
+            <li class="ecl-language-list__item ecl-language-list__item--is-active"><a lang="en" hrefLang="en"
+                rel="alternate" href="/example#language_en"
+                class="ecl-language-list__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"><span
+                  class="ecl-link__label">English</span> <svg focusable="false" aria-hidden="true"
+                  class="ecl-link__icon ecl-icon ecl-icon--xs">
+                  <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#ui--check"></use>
+                </svg></a></li>
+            <li class="ecl-language-list__item "><a lang="fr" hrefLang="fr" rel="alternate" href="/example#language_fr"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">français</a></li>
+            <li class="ecl-language-list__item "><a lang="ga" hrefLang="ga" rel="alternate" href="/example#language_ga"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">Gaeilge</a></li>
+            <li class="ecl-language-list__item "><a lang="hr" hrefLang="hr" rel="alternate" href="/example#language_hr"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">hrvatski</a></li>
+            <li class="ecl-language-list__item "><a lang="it" hrefLang="it" rel="alternate" href="/example#language_it"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">italiano</a></li>
+          </ul>
+        </div>
+        <div class="ecl-language-list__column ecl-col-12 ecl-col-lg-4">
+          <ul class="ecl-language-list__list">
+            <li class="ecl-language-list__item "><a lang="lv" hrefLang="lv" rel="alternate" href="/example#language_lv"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">latviešu</a></li>
+            <li class="ecl-language-list__item "><a lang="lt" hrefLang="lt" rel="alternate" href="/example#language_lt"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">lietuvių</a></li>
+            <li class="ecl-language-list__item "><a lang="hu" hrefLang="hu" rel="alternate" href="/example#language_hu"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">magyar</a></li>
+            <li class="ecl-language-list__item "><a lang="mt" hrefLang="mt" rel="alternate" href="/example#language_mt"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">Malti</a></li>
+            <li class="ecl-language-list__item "><a lang="nl" hrefLang="nl" rel="alternate" href="/example#language_nl"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">Nederlands</a></li>
+            <li class="ecl-language-list__item "><a lang="pl" hrefLang="pl" rel="alternate" href="/example#language_pl"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">polski</a></li>
+            <li class="ecl-language-list__item "><a lang="pt" hrefLang="pt" rel="alternate" href="/example#language_pt"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">português</a></li>
+            <li class="ecl-language-list__item "><a lang="ro" hrefLang="ro" rel="alternate" href="/example#language_ro"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">română</a></li>
+            <li class="ecl-language-list__item "><a lang="sk" hrefLang="sk" rel="alternate" href="/example#language_sk"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">slovenčina</a></li>
+            <li class="ecl-language-list__item "><a lang="sl" hrefLang="sl" rel="alternate" href="/example#language_sl"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">slovenščina</a></li>
+            <li class="ecl-language-list__item "><a lang="fi" hrefLang="fi" rel="alternate" href="/example#language_fi"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">suomi</a></li>
+            <li class="ecl-language-list__item "><a lang="sv" hrefLang="sv" rel="alternate" href="/example#language_sv"
+                class="ecl-language-list__link ecl-link ecl-link--standalone">svenska</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header my-1 pb-0">
+                        <h1 class="text-primary">Welcome to the CS Inventory Vocabulary</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        Citizen science is the non-professional involvement of volunteers in the scientific process, whether in the data collection phase or in other phases of the research. 
+						It can be a powerful tool for environmental management that has the potential to inform an increasingly complex environmental policy landscape and to meet the growing demands 
+						from society for more participatory decision-making. While there is growing interest from international bodies and national governments in citizen science, the evidence 
+						that it can successfully contribute to environmental policy development, implementation, evaluation or compliance remains scant. 
+						Central to elucidating this question is a better understanding of the benefits delivered by citizen science, that is to determine to what extent these benefits can 
+						contribute to environmental policy, and to establish whether projects that provide policy support also co-benefit science and encourage meaningful citizen engagement. 
+                    </p>
+                    <p>
+                        In order to get an evidence base of citizen science activities that can support environmental policies in the European Union (EU), the European Commission (DG ENV, 
+						with the support of DG JRC) contracted Bio Innovation Service (FR), in association with Fundacion Ibercivis (ES) and The Natural History Museum (UK), to perform a 
+						"Study on an inventory of citizen science activities for environmental policies" (see the "Publications" section below). The first objective was to develop an 
+						inventory of citizen science projects relevant for environmental policy and assess how these projects contribute to the Sustainable Development Goals (SDGs) set 
+						by the United Nations (UN) General Assembly. To this end, a desk-research and an EU-wide survey were used to identify 512 citizen science projects of relevance to 
+						environmental policy. The second objective was to assess the conditions under which citizen science can best support environmental policy, through the selection and 
+						analysis of a sample of citizen science projects. This was followed by an in-depth analysis of 45 projects along 94 project attributes. Subsequently, this analysis provided 
+						the foundation for making a series of recommendations to leverage the contribution of citizen science to environmental policy.
+                    </p>
+                    <p>
+                        These pages provide an overview of the attributes that were used to compile the above mentioned inventory, together with their definitions.
+                    </p>					
+                </div>
+            </div>
+
+			<br>
+			<h4><b>Project</b></h4>
+            <div class="row mt-3">
+                <div class="col-sm">
+				A project is a temporary organisational structure set up to create a unique product or service (output) within certain constraints such as time, cost and quality.
+				<br><br>
+                    <div class="card ">
+                        <div class="card-body">
+							<table>
+							<tr>
+								<th>Property</th>
+                <th>Label</th>
+								<th>Expected Type</th>
+								<th>Description</th>
+							</tr>            
+              <tr>
+                <td class="prop-nam">active</td>
+                <td>Still active</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>Indication (yes/no) if the project is still active.
+                  <br><i>Allowed values: Yes, No</i></td>
+              </tr>
+              <tr>
+                <td class="prop-nam">category</td>
+                <td>Primary category of project</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>Adapted from on Haklay et al. (2013) Citizen Science and Policy: A European Perspective.
+                  <br><i>Allowed values: Passive sensing, Crowd-sourcing, Volunteer computing, Monitoring, Occasional reporting, DIY engineering, Civic science, Facilitating platform</i></td>
+              <tr>
+                <td class="prop-nam">contact</td>
+                <td>Contact</td>
+                <td><a href="text.html">Text</a></td>
+                <td>Contact for the project, ideally an e-mail address (alias or personal).</td>
+              </tr>
+              <tr>
+                <td class="prop-nam">description</td>
+                <td>Brief description</td>
+                <td><a href="text.html">Text</a></td>
+                <td>Short description of the project (1 or 2 sentences).</td>
+              </tr>
+              <tr>
+                <td class="prop-nam">end_date</td>
+                <td>End year</td>
+                <td><a href="number.html">Number</a></td>
+                <td>The year when the project ended, or will end.</td>
+              </tr>             
+              <tr>
+                <td class="prop-nam"><a href="environmental_classification.html">environmental_classification</a></td>
+                <td>Environmental Classification</td>
+                <td><a href="environmental_classification.html">EnvironmentalClassification</a></td>
+                <td>The environmental classification of the project, including the primary environmental domain and field addressed by the project activities.</td>
+              </tr>
+              <tr>
+                <td class="prop-nam">geographic_coverage</td>
+                <td>Geographic coverage</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>The countries involved in the project team/consortium (comma separated list; lead country first). 
+                    Naming for countries follows https://www.iso.org/obp/ui/#search (English short name + "Europe" + "World").</td>
+              </tr> 
+              <tr>
+                <td class="prop-nam">geographic_extent</td>
+                <td>Geographical extent</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>The spatial scale at which the project is implemented. Sub-national is used as generic category for projects for which the sub-national scale is not known (i.e. regional, or city, or neighborhood). All regional, city and neighborhood projects are also sub-national projects.
+                  <br><i>Allowed values: Global, Macro-regional, National, Sub-national, Regional, City, Neighborhood</i></td>
+              </tr>
+							<tr>
+								<td class="prop-nam">id</td>
+                <td>UID</td>
+								<td><a href="number.html">Number</a></td>
+								<td>Unique identifier of an entry.</td>
+							</tr>
+              <tr>
+                <td class="prop-nam"><a href="lead_organisation.html">lead_organisation</a></td>
+                <td>Lead Organisation</td>
+                <td><a href="lead_organisation.html">LeadOrganisation</a></td>
+                <td>Information about the lead partner, including name and organisation type.</td>
+              </tr>
+							<tr>
+								<td class="prop-nam">name</td>
+                <td>Name</td>
+								<td><a href="text.html">Text</a></td>
+								<td>Name of the project.</td>
+							</tr>
+              <tr>
+                <td class="prop-nam">policy_relevance</td>
+                <td>Policy relevance</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>Main phase of the policy cycle potentially impacted by the project actions.
+                  <br><i>Allowed values: Problem definition, Early-warning, Policy implementation or monitoring,  Policy evaluation, Compliance assurance, NA: no clear policy link</i></td>
+              </tr>
+              <tr>
+                <td class="prop-nam"><a href="policy_uptake.html">policy_uptake</a></td>
+                <td>Policy Uptake</td>
+                <td><a href="policy_uptake.html">PolicyUptake</a></td>
+                <td>The policy uptake of the project, including information if the policy uptake is claimed (yes/no) and an explanation.
+                  <br>This indicator is only a reflection of information published on the projects website and should not be considered as a measure of effective uptake into policy. For a measure of policy uptake, please consider the data from the selected studies: <a href="https://data.jrc.ec.europa.eu/dataset/jrc-citsci-1000">https://data.jrc.ec.europa.eu/dataset/jrc-citsci-10004</a>.</td>
+              </tr>
+              <tr>
+                <td class="prop-nam"><a href="project_initiator.html">project_initiator</a></td>
+                <td>Project Initiator</td>
+                <td><a href="project_initiator.html">ProjectInitiator</a></td>
+                <td>Information about the project initiator, in case it differs from the lead partner.</td>
+              </tr>
+              <tr>
+                <td class="prop-nam"><a href="sdg.html">sdg</a></td>
+                <td>SDG</td>
+                <td><a href="sdg.html">SDG</a></td>
+                <td>Indication of the possible impact of the project on each of the 17 Sustainable Development Goals, as defined by the United Nations (UN).</td>
+              </tr>
+              <tr>
+                <td class="prop-nam">social_uptake</td>
+                <td>Social uptake</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>Indication of number of participants or followers of the project. Assessed based on expert knowledge:
+                <br>- Very large: large number of users, tradition, excellent EC-funded projects with high numbers of users (above 1,000). So: zooniverse, opal, ebird, ornitho and other big names, because of number of users. Old UK societies (from XVII century to late XX century), because of tradition; EC-funded projects that we would say excellent in review and with high number of users (above 1000)
+                <br>- Large: EC-funded projects that we would say good in review and with medium number of users (below 1000)
+                <br>- Considerable: all others 
+                <br><i>Allowed values: Very large, Large, Considerable</i></td>
+              </tr>
+              <tr>
+                <td class="prop-nam">source</td>
+                <td>Source</td>
+                <td><a href="defined_term.html">DefinedTerm</a></td>
+                <td>Source of the project description record, i.e. how this description became available. The list of possible answer options (currently including "Original EC Study", "EUSurvey" and "Irish EPA") can be extended if new sources become available.
+                <br><i>Allowed values: Original EC Study, EUSurvey, Irish EPA</i></td>
+              </tr>
+							<tr>
+								<td class="prop-nam">start_date</td>
+                <td>Start year</td>
+								<td><a href="number.html">Number</a></td>
+								<td>The year when the project started.</td>
+							</tr>
+              <tr>
+                <td class="prop-nam">url</td>
+                <td>Website</td>
+                <td><a href="url.html">URL</a></td>
+                <td>Link to the project's website.</td>
+              </tr>
+							</table>													
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<br>
+
+
+<footer class="ecl-footer-standardised">
+  <div class="ecl-container ecl-footer-standardised__container">
+    <div class="ecl-footer-standardised__section ecl-footer-standardised__section1"><a href="https://citizensdata.jrc.ec.europa.eu"
+      class="ecl-footer-standardised__title ecl-link ecl-link--standalone">Data Collection Hub</a>
+      <div class="ecl-footer-standardised__description">This site is managed by the European Commission's Joint Research Centre (JRC)</div>
+    </div>
+    <div class="ecl-footer-standardised__section ecl-footer-standardised__section6">
+      <div class="ecl-footer-standardised__content">More information on:</div>
+      <ul class="ecl-footer-standardised__list ecl-footer-standardised__list--condensed">
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/jrc/communities/en/community/citizensdata"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">CitizenSData Community Page</a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/jrc/en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">EU Science Hub</a></li>
+      </ul>
+    </div>
+    <div class="ecl-footer-standardised__section ecl-footer-standardised__section7"><a
+        href="https://ec.europa.eu/info/index_en"
+        class="ecl-footer-standardised__title ecl-link ecl-link--standalone">European Commission</a></div>
+    <div class="ecl-footer-standardised__section ecl-footer-standardised__section8">
+      <ul class="ecl-footer-standardised__list">
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/about-european-commission/contact_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Contact the European Commission</a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://europa.eu/european-union/contact/social-networks_en#n:+i:4+e:1+t:+s"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone ecl-link--icon ecl-link--icon-after"><span
+              class="ecl-link__label">Follow the European Commission on social media</span> <svg focusable="false"
+              aria-hidden="true" class="ecl-link__icon ecl-icon ecl-icon--xs">
+              <use xlink:href="/component-library/dist/media/icons.1dbe9812.svg#ui--external"></use>
+            </svg></a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/resources-partners_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Resources for partners</a></li>
+      </ul>
+    </div>
+    <div class="ecl-footer-standardised__section ecl-footer-standardised__section9">
+      <ul class="ecl-footer-standardised__list">
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/language-policy_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Language policy</a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/cookies_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Cookies</a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/privacy-policy_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Privacy policy</a></li>
+        <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/legal-notice_en"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Legal notice</a></li>
+        <li id="brexit-content-disclaimer" class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/brexit-content-disclaimer"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Brexit content disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+    <!-- paste the markup from the template here -->
+    <script
+      src="https://cdn1.fpfis.tech.ec.europa.eu/ecl/v2.24.0/ec-preset-website/scripts/ecl-ec-preset-website.js"
+      integrity="sha256-Q2icCzfXqIzarWF//++9auyORJSdr/5R2newRbUqAcY= sha384-yI5jQ21QIzGHSfKXItEmh67/e5g91zjnd+UAmAAzdBv/XaCQC03tMWTErk0tSpKw sha512-CHeXGc8jzWghhq20L4P9OhLMC1LfBai2Xh8+nV5FGvyP8ALCSU3s1bdmoHK0Ve2L6RVr/e5gChZuTZ7jsi5oug=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      ECL.autoInit();
+    </script>
+  </body>
+  </body>
+</html>
