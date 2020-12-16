@@ -192,14 +192,15 @@
                   <td>Still active</td>
                   <td><a href="index.html">Project</a></td>
                   <td>Indication (yes/no) if the project is still active.
-                  <br><i>Allowed values: Yes, No</i></td>
+                  <br><br><i>Allowed values: Yes, No</i></td>
                  </tr>
                  <tr>
                   <td class="prop-nam">category</td>
                   <td>Primary category of project</td>
                   <td><a href="index.html">Project</a></td>
                   <td>Adapted from on Haklay et al. (2013) Citizen Science and Policy: A European Perspective.
-                   <br><i>Allowed values: Passive sensing, Crowd-sourcing, Volunteer computing, Monitoring, Occasional reporting, DIY engineering, Civic science, Facilitating platform</i></td>
+				   <br>See the attributes of the <a href="http://data.jrc.ec.europa.eu/dataset/jrc-citsci-10004">"selected practices in citizen science for environmental policy"</a> for other potential categories of projects impacted.
+                   <br><br><i>Allowed values: Passive sensing, Crowd-sourcing, Volunteer computing, Monitoring, Occasional reporting, DIY engineering, Civic science, Facilitating platform</i></td>
                   </tr>                               
                   <tr>
                     <td class="prop-nam"><a href="environmental_classification.html">environmental_classification</a></td>
@@ -219,7 +220,7 @@
                        <td>Geographical extent</td>
                        <td><a href="index.html">Project</a></td>
                        <td>The spatial scale at which the project is implemented. Sub-national is used as generic category for projects for which the sub-national scale is not known (i.e. regional, or city, or neighborhood). All regional, city and neighborhood projects are also sub-national projects.
-                       <br><i>Allowed values: Global, Macro-regional, National, Sub-national, Regional, City, Neighborhood</i></td>
+                       <br><br><i>Allowed values: Global, Macro-regional, National, Sub-national, Regional, City, Neighborhood</i></td>
                     </tr>
                     <tr>
                       <td class="prop-nam"><a href="lead_organisation.html">lead_organisation</a></td>
@@ -231,20 +232,14 @@
                       <td class="prop-nam">policy_relevance</td>
                       <td>Policy relevance</td>
                       <td><a href="index.html">Project</a></td>
-                      <td>Main phase of the policy cycle potentially impacted by the project actions.</td>
+                      <td>Main phase of the policy cycle potentially impacted by the project actions. See the attributes of the <a href="http://data.jrc.ec.europa.eu/dataset/jrc-citsci-10004">"selected practices in citizen science for environmental policy"</a> for other potential policy areas affected.
+							<br><br><i>Allowed values: Problem definition, Early-warning, Policy implementation or monitoring,  Policy evaluation, Compliance assurance, NA: no clear policy link</i></td>
                     </tr>
                     <tr>
-                      <td class="prop-nam"><a href="policy_uptake.html">policy_uptake</a></td>
-                      <td>Policy Uptake</td>
-                      <td><a href="policy_uptake.html">PolicyUptake</a></td>
-                      <td>The policy uptake of the project, including information if the policy uptake is claimed (yes/no) and an explanation.
-                        <br>This indicator is only a reflection of information published on the projects website and should not be considered as a measure of effective uptake into policy. For a measure of policy uptake, please consider the data from the <a href="http://data.jrc.ec.europa.eu/dataset/jrc-citsci-10004">"selected practices in citizen science for environmental policy"</a>.</td>
-                    </tr>
-                    <tr>
-                      <td class="prop-nam"><a href="project_initiator.html">project_initiator</a></td>
-                      <td>Project Initiator</td>
-                      <td><a href="project_initiator.html">ProjectInitiator</a></td>
-                      <td>Information about the project initiator, in case it differs from the lead partner.</td>
+                      <td class="prop-nam"><a href="policy_aims.html">policy_aims</a></td>
+                      <td>Policy aims</td>
+                      <td><a href="policy_aims.html">PolicyAims</a></td>
+                      <td>The policy aims of the project, information on their existence (yes/no) and an explanation of this value.</td>
                     </tr>
                     <tr>
                       <td class="prop-nam"><a href="sdg.html">sdg</a></td>
@@ -256,18 +251,18 @@
                       <td class="prop-nam">social_uptake</td>
                       <td>Social uptake</td>
                       <td><a href="index.html">Project</a></td>
-                      <td>Indication of number of participants or followers of the project. Assessed based on expert knowledge:
+                      <td>Indication of number of participants or followers of the project. Assessed based on expert knowledge/reporting project contact point:
                       <br/>- Very large: large number of users, tradition, excellent EC-funded projects with high numbers of users (above 1,000). So: zooniverse, opal, ebird, ornitho and other big names, because of number of users. Old UK societies (from XVII century to late XX century), because of tradition; EC-funded projects that we would say excellent in review and with high number of users (above 1000)
                       <br/>- Large: EC-funded projects that we would say good in review and with medium number of users (below 1000)
                       <br/>- Considerable: all others
-                      <br><i>Allowed values: Very large, Large, Considerable</i></td>
+                      <br><br><i>Allowed values: Very large, Large, Considerable</i></td>
                     </tr>
                     <tr>
                       <td class="prop-nam">source</td>
                       <td>Source</td>
                       <td><a href="index.html">Project</a></td>
                       <td>Source of the project description record, i.e. how this description became available. The list of possible answer options (currently including "Original EC Study", "EUSurvey" and "Irish EPA") can be extended if new sources become available.
-                      <br><i>Allowed values: Original EC Study, EUSurvey, Irish EPA</i></td>
+                      <br><br><i>Allowed values: Original EC Study, EUSurvey, Irish EPA</i></td>
                     </tr>
                   </table>                                                    
                 </div>
@@ -372,6 +367,11 @@
             class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Privacy policy</a></li>
         <li class="ecl-footer-standardised__list-item"><a href="https://ec.europa.eu/info/legal-notice_en"
             class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Legal notice</a></li>
+
+        <!--
+        <li class="ecl-footer-standardised__list-item"><a href="/example"
+            class="ecl-footer-standardised__link ecl-link ecl-link--standalone">Brexit content disclaimer</a></li>
+        -->
       </ul>
     </div>
   </div>
